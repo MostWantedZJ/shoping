@@ -19,4 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 public interface IUserService extends IService<User> {
 
     public ResponseBean doLogin(LoginVo loginVo, HttpServletRequest request, HttpServletResponse response);
+    public User getUserByTicket(String ticket,HttpServletRequest request,HttpServletResponse response);
+
 }

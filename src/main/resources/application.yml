@@ -1,6 +1,5 @@
 
 spring:
-
   thymeleaf:
     cache: false
   datasource:
@@ -16,6 +15,18 @@ spring:
       auto-commit: true
       max-lifetime: 1800000
       connection-timeout: 30000
+  redis:
+    host: 192.168.56.101
+    port: 6379
+    database: 0
+    timeout: 10000ms
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: 10000ms
+        max-idle: 200
+        min-idle: 5
+
 
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*Mapper.xml
@@ -26,3 +37,5 @@ logging:
     com.highio.shoping.mapper: debug
 server:
   port: 8081
+
+

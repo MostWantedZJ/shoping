@@ -12,6 +12,7 @@ import com.highio.shoping.vo.LoginVo;
 import com.highio.shoping.vo.ResponseBean;
 import com.highio.shoping.vo.ResponseBeanEnum;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
@@ -33,6 +34,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    RedisTemplate redisTemplate;
+
 
     @Override
     public ResponseBean doLogin(LoginVo loginVo, HttpServletRequest request, HttpServletResponse response){
@@ -45,17 +49,26 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         }
         if(MD5Util.hexBySlat(loginVo.getPassword(),user.getSlat()).equals(user.getPassword())){
             String ticket = UUIDUtil.uuid();
-            request.getSession().setAttribute(ticket,user);
-            CookieUtil.setCookie(request,response,"userTicket",ticket);
+            //使用springsession
+            //request.getSession().setAttribute(ticket,user);
 
+            //使用redis存储用户信息
+            redisTemplate.opsForValue().set("user:"+ticket,user);
+            CookieUtil.setCookie(request,response,"userTicket",ticket);
             return ResponseBean.success();
         }
-
-
-
         throw new GlobleException(ResponseBeanEnum.WRONGPASSWORDERROR);
-
     }
 
-
+    @Override
+    public User getUserByTicket(String ticket,HttpServletRequest request,HttpServletResponse response) {
+        if(ticket == null|| ticket.equals("")){
+            return null;
+        }
+        User user = (User) redisTemplate.opsForValue().get("user:"+ticket);
+        if(user != null){
+            CookieUtil.setCookie(request,response,"userTicket",ticket);
+        }
+        return user;
+    }
 }
