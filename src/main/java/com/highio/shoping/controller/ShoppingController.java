@@ -23,9 +23,7 @@ public class ShoppingController {
         if(user == null){
             return ResponseBean.error(ResponseBeanEnum.UNKNOWERROR);
         }
-
-
-
+        return ResponseBean.success(user);
     }
 
 
