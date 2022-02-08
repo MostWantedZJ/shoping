@@ -1,0 +1,28 @@
+
+spring:
+
+  thymeleaf:
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+    #连接池
+    hikari:
+      pool-name: Datashopping
+      minimum-idle: 5
+      maximum-pool-size: 10
+      auto-commit: true
+      max-lifetime: 1800000
+      connection-timeout: 30000
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+
+#mybatis sql打印(方法接口所在包)
+logging:
+  level:
+    com.highio.shoping.mapper: debug
+server:
+  port: 8081
