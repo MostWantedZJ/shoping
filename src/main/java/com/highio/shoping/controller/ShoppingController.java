@@ -24,20 +24,23 @@ public class ShoppingController {
 
 
     @RequestMapping("/getList")
-    public ResponseBean getList(HttpSession session, @CookieValue("userTicket")String userTicket, HttpServletRequest request, HttpServletResponse response){
-        if(userTicket == null || userTicket.equals("")){
-            return ResponseBean.error(ResponseBeanEnum.NOLOGINERROR);
-        }
+    public ResponseBean getList(){
+//        if(userTicket == null || userTicket.equals("")){
+//            return ResponseBean.error(ResponseBeanEnum.NOLOGINERROR);
+//        }
 
 //        使用springsession
 //        User user = (User) session.getAttribute(userTicket);
+//
+//        User user = userService.getUserByTicket(userTicket,request,response);
+//
+//        if(user == null){
+//            return ResponseBean.error(ResponseBeanEnum.UNKNOWERROR);
+//        }
 
-        User user = userService.getUserByTicket(userTicket,request,response);
 
-        if(user == null){
-            return ResponseBean.error(ResponseBeanEnum.UNKNOWERROR);
-        }
-        return ResponseBean.success(user);
+
+        return ResponseBean.success();
     }
 
 

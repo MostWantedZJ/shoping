@@ -32,7 +32,7 @@ public class ReverseGenerator {
                             .pathInfo(Collections.singletonMap(OutputFile.mapperXml, projectPath+"/src/main/resources/mapper")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder ->
-                        builder.addInclude("t_user").addTablePrefix("t_")
+                        builder.addInclude("t_seckill_goods").addTablePrefix("t_")
                                 .controllerBuilder().enableRestStyle().enableHyphenStyle()
                                 .entityBuilder().enableLombok().addTableFills(
                                 new Column("create_time", FieldFill.INSERT)

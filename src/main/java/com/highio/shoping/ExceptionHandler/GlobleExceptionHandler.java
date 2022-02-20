@@ -5,6 +5,9 @@ import com.highio.shoping.vo.ResponseBeanEnum;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.HandlerInterceptor;
+
+import javax.servlet.ServletException;
 
 @RestControllerAdvice
 public class GlobleExceptionHandler{
@@ -19,8 +22,11 @@ public class GlobleExceptionHandler{
             ResponseBean responseBean = ResponseBean.error(ResponseBeanEnum.VALIDERROR);
             responseBean.setMessage(ex.getAllErrors().get(ex.getAllErrors().size()-1).getDefaultMessage());
             return responseBean;
+        }else if(e instanceof LoginNeededException){
+            return ResponseBean.error(ResponseBeanEnum.SERVELETERRO);
         }
-        return ResponseBean.error(ResponseBeanEnum.ERROR);
+        System.out.println(e);
+        return ResponseBean.error(ResponseBeanEnum.UNKNOWERROR);
     }
 
 

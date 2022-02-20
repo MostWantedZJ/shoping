@@ -17,7 +17,9 @@ public enum ResponseBeanEnum {
     VALIDERROR(50020,"validerror"),
     WRONGPASSWORDERROR(50030,"wrongpassword"),
     NOLOGINERROR(50040,"nologin"),
-    UNKNOWERROR(8000,"unknow error")
+    UNKNOWERROR(8000,"unknow error"),
+    SERVELETERRO(9000,"servlet error"),
+
     ;
 
     private final Integer code;
