@@ -1,7 +1,8 @@
 package com.highio.shoping.mapper;
 
-import com.highio.shoping.pojo.Order;
+import com.highio.shoping.pojo.SeckillOrder;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author jianzhang
  * @since 2022-02-20
  */
-public interface OrderMapper extends BaseMapper<Order> {
+
+@Mapper
+public interface SeckillOrderMapper extends BaseMapper<SeckillOrder> {
 
 }

@@ -4,6 +4,7 @@ package com.highio.shoping;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
+import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import com.baomidou.mybatisplus.generator.fill.Column;
 
@@ -38,12 +39,17 @@ public class ReverseGenerator {
                                 new Column("create_time", FieldFill.INSERT)
                         ).build()
                 )
+                .strategyConfig(builder -> builder.mapperBuilder()
+                        .enableBaseResultMap()
+                        .build()
+                )
                 .templateConfig(builder -> {
                     builder.entity("templates/entity.java")
                             .mapper("templates/mapper.java")
                             .service("templates/service.java")
                             .serviceImpl("templates/serviceImpl.java")
-                            .controller("templates/controller.java");
+                            .controller("templates/controller.java")
+                            .mapperXml("templates/mapper.xml");
                 })
                 .templateEngine(new FreemarkerTemplateEngine()) // 使用Freemarker引擎模板，默认的是Velocity引擎模板
                 .execute();

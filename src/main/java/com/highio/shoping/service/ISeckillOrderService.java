@@ -1,7 +1,8 @@
 package com.highio.shoping.service;
 
-import com.highio.shoping.pojo.Order;
+import com.highio.shoping.pojo.SeckillOrder;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author jianzhang
  * @since 2022-02-20
  */
-public interface IOrderService extends IService<Order> {
+
+public interface ISeckillOrderService extends IService<SeckillOrder> {
 
 }

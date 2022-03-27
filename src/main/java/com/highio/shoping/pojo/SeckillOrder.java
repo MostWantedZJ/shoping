@@ -4,8 +4,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -21,9 +19,9 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@TableName("t_order")
-@ApiModel(value = "Order对象", description = "")
-public class Order implements Serializable {
+@TableName("t_seckill_order")
+@ApiModel(value = "SeckillOrder对象", description = "")
+public class SeckillOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,23 +30,9 @@ public class Order implements Serializable {
 
     private Long userId;
 
+    private Long orderId;
+
     private Long goodsId;
-
-    private Long deliveryAddId;
-
-    private String goodsName;
-
-    private Integer goodsCount;
-
-    private BigDecimal goodsPrice;
-
-    private Integer orderChannel;
-
-    private Integer status;
-
-    private LocalDateTime createDate;
-
-    private LocalDateTime payDate;
 
 
 }

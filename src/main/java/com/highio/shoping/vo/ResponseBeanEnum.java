@@ -19,8 +19,11 @@ public enum ResponseBeanEnum {
     NOLOGINERROR(50040,"nologin"),
     UNKNOWERROR(8000,"unknow error"),
     SERVELETERRO(9000,"servlet error"),
-
+    NOSTOCKERROR(9900,"no stock"),
+    ONEBUYONCE(9009,"one buy only once"),
+    WAITING(0,"wating")
     ;
+
 
     private final Integer code;
     private final String message;

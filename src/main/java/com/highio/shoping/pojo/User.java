@@ -2,6 +2,7 @@ package com.highio.shoping.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import com.highio.shoping.validator.IsMobile;
@@ -40,7 +41,7 @@ public class User implements Serializable {
 
     private String head;
 
-    private LocalDateTime registerDate;
+    private Date registerDate;
 
     private Integer loginCount;
 
